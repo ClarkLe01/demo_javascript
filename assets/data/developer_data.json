@@ -1,0 +1,16 @@
+{
+    "developer_list": [
+        {
+            "id":1,
+            "first_name": "Layla",
+            "last_name":"Nguyen",
+            "id_project":1
+        },
+        {
+            "id":1,
+            "first_name": "Johny",
+            "last_name":"Ho",
+            "id_project":null
+        }
+    ]
+}

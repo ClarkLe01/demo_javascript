@@ -1,4 +1,4 @@
-class Project {
+class Project_html {
     constructor(json) {
         this.id = json['id'];
         this.name = json['name']
@@ -16,7 +16,7 @@ class Project {
     getTdName() {
         let td = document.createElement('td');
         let a_link = document.createElement('a');
-        a_link.setAttribute('href', './update_Project.html');
+        a_link.setAttribute('href', `./update_Project.html?id=${this.id}`);
         a_link.innerText = this.name;
         td.appendChild(a_link);
         td.appendChild(document.createElement('br'));
@@ -39,7 +39,7 @@ class Project {
     getDev() {
         let td = document.createElement('td');
         let a_link = document.createElement('a');
-        a_link.setAttribute('href', './update_Developer.html');
+        a_link.setAttribute('href', `./update_Developer.html?id_project=${this.id}`);
         a_link.innerText = this.dev;
         td.appendChild(a_link);
         return td;
@@ -49,7 +49,7 @@ class Project {
         td.setAttribute('class', 'm-1')
         td.innerHTML = ` 
         <div class="btn-container">
-            <a href="./update_Project.html" class="btn btn-info btn-sm">
+            <a href="./update_Project.html?id=${this.id}" class="btn btn-info btn-sm">
                 <i class="fa fa-pencil"></i>
                 <spanclass="m-1">Edit</spanclass=>
             </a>

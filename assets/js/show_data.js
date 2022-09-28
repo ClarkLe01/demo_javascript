@@ -1,7 +1,7 @@
 $(document).ready(() => {
     console.log("ready");
     var Jsondata = null;
-    var url_data = './assets/data/sample1.json';
+    var url_data = './assets/data/project_data.json';
     $.ajax({
         url: url_data,
         type: 'get',
@@ -17,7 +17,7 @@ $(document).ready(() => {
     for(let i in dataJson){
         var drow = document.createElement('tr');
         drow.setAttribute("id", `project_${i}`);
-        let df = new Project(dataJson[i]);
+        let df = new Project_html(dataJson[i]);
         drow.append(df.getTdId());
         drow.append(df.getTdName());
         drow.append(df.getDesc());

@@ -1,0 +1,1 @@
+var url_data = './assets/data/project_data.json';
