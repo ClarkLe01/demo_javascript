@@ -9,7 +9,7 @@ class Project_html {
     }
     getTdId() {
         let th = document.createElement('th');
-        th.setAttribute('scope','col');
+        th.setAttribute('scope', 'col');
         th.innerText = this.id;
         return th;
     }
@@ -61,3 +61,34 @@ class Project_html {
     }
 
 }
+
+
+// class Queue {
+//     #queue = [];
+//     constructor(max_size){
+//         this.max_size = max_size;
+//     }
+
+//     enqueue(item) {
+//         return this.#queue.unshift(item);
+//     }
+
+//     dequeue() {
+//         return this.#queue.pop();
+//     }
+
+//     peek() {
+//         return this.#queue[this.length - 1];
+//     }
+
+//     get length() {
+//         return this.#queue.length;
+//     }
+
+//     isEmpty() {
+//         return this.#queue.length === 0;
+//     }
+//     isFull(){
+//         return this.#queue.length == this.max_size;
+//     }
+// }
