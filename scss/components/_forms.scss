@@ -1,7 +1,7 @@
 @use "../custom" as *;
 @use "../components/mixins" as *;
 
-.project-form{
+.project-form,.developer-form{
     @include gradient;
     padding: 8rem 0 0 0;
     width: 100%;
