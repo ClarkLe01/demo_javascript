@@ -43,7 +43,7 @@ $(document).ready(() => {
 })
 
 
-var filter_byDate = (start,end)=>{
+var filter_byDate = (name,start,end)=>{
     if(Date.parse(start)>Date.parse(end)){
         alert('Please choose proper the range of date');
     }
