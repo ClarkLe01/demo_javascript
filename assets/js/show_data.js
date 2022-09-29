@@ -19,7 +19,9 @@ $(document).ready(() => {
 
 var add_data_table = (Jsondata)=>{
     var dataTableBody = $('table#project_data tbody');
-    // dataTableBody.empty();
+    dataTableBody.empty();
+    var drow = document.createElement('tr');
+    dataTableBody.append(drow);
     for(let i in Jsondata){
         console.log(i);
         var drow = document.createElement('tr');
