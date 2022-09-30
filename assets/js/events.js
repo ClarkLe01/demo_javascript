@@ -14,19 +14,8 @@ function btn_page_click(x) {
     });
 }
 
-// function filter_Data(event){
-//     event.preventDefault();
-//     var start_date = $('#startdate-search').val();
-//     var end_date = $('#finaldate-search').val();
-//     var name_project = $("#search_input").val();
-//     console.log("filter_Data function");
-//     valid_filter(name_project, start_date, end_date);
-   
-// }
 
-$("#search_project_btn").click((even)=>{
-    event.preventDefault();
-    event.stopPropagation(); // Added to solve the problem!
+$("#search_project_btn").click((event)=>{
     var start_date = $('#startdate-search').val();
     var end_date = $('#finaldate-search').val();
     var name_project = $("#search_input").val();

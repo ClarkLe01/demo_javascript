@@ -12,3 +12,9 @@ flatpickr(".search-datepicker", {
     altFormat: "d/m/Y",
     dateFormat: "Y-m-d",
 });
+
+flatpickr(".update-js-datepicker", {
+    altInput: true,
+    altFormat: "d/m/Y",
+    dateFormat: "Y-m-d",
+});

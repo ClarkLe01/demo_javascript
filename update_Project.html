@@ -70,7 +70,7 @@
                 <!--START THE CONTENT FOR THE FORM-->
                 <div class="col-md-6 form intros shadow border-1 p-5">
                     <h1 class="lh-base text-center">UPDATE PROJECT</h1>
-                    <form action="" class="row">
+                    <form action="./list_projects.html" class="row" onsubmit="return validationUpdatePoject()" method="post">
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="Project-Name" class="p-1">Project Name</label>
@@ -90,14 +90,14 @@
                         <div class="col-lg-6 col-md mb-3">
                             <div class="form-group">
                                 <label for="input_from" class="p-1">From</label>
-                                <input type="text" class="form-control js-datepicker" id="datepicker-start" placeholder="Start Date">
+                                <input type="text" class="form-control update-js-datepicker" id="datepicker-start" placeholder="Start Date">
                             </div>
 
                         </div>
                         <div class="col-lg-6 col-md mb-3">
                             <div class="form-group">
                                 <label for="input_to" class="p-1">To</label>
-                                <input type="text" class="form-control js-datepicker" id="datepicker-end" placeholder="End Date">
+                                <input type="text" class="form-control update-js-datepicker" id="datepicker-end" placeholder="End Date">
                             </div>
                         </div>
                         <div class="col-lg-12 mb-3">
