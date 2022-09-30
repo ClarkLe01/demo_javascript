@@ -1,5 +1,6 @@
 var pagination = (numRecord_per_page, Jsondata) => {
     var numPage = Math.ceil(Jsondata.length / numRecord_per_page);
+    console.log("pagination_numpage = "+numPage)
     var dem = 0;
     var arrData_perPage = []
     for (let i = 1; i <= numPage; i++) {
@@ -14,34 +15,34 @@ var pagination = (numRecord_per_page, Jsondata) => {
 
 var add_nav_pagination = (numPage, current_page = 1) => {
     var pagination = $('#pagination');
+    var prevDis = (current_page==1)?"disabled":"";
+    var nexDis = (current_page==numPage)?"disabled":"";
     pagination.empty();
-    var html = '';
-    if (numPage <= 1) {
-        html = `<li class="page-item"><a class="page-link" href="./list_projects.html?page=1">1</a></li>`;
-        
-
-    }
-    else if (current_page == numPage) {
-        html = `    
-        <li class="page-item">
-            <a class="page-link" href="./list_projects.html?page=${current_page - 1}" aria-label="Previous">
+    var html = `    
+    <li class="page-item btn-${current_page - 1}" onclick="btn_page_click(${current_page - 1})" ${prevDis}>
+        <button class="page-link btn-paging " aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>`;
-        for (let i = 1; i <= numPage; i++) {
-            html += `<li class="page-item"><a class="page-link" href="./list_projects.html?page=${i}">${i}</a></li>`;
-        }   
-    }
-    else if (current_page == 1) {
-        for (let i = 1; i <= numPage; i++) {
-            html += `<li class="page-item"><a class="page-link" href="./list_projects.html?page=${i}">${i}</a></li>`;
-        }
-        html += `
-        <li class="page-item">
-            <a class="page-link" href="./list_projects.html?page=${Number.parseInt(current_page)+1}" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>`;
-    }
+        </button>
+    </li>`;
+    
+    for (let i = 1; i <= numPage; i++) {
+        html += `<li class="page-item btn-${i}" onclick="btn_page_click(${i})"><button class="page-link btn-paging" id="btn-${i}">${i}</button></li>`;
+    }  
+
+    html += `
+    <li class="page-item btn-${current_page + 1}" onclick="btn_page_click(${current_page + 1})">
+        <button class="page-link btn-paging" id="btn-${Number.parseInt(current_page)+1}" aria-label="Next" ${nexDis}>
+        <span aria-hidden="true">&raquo;</span>
+        </button>
+    </li>`;
+    
     pagination.append(html);
 }
+
+
+
+
+
+
+
+
