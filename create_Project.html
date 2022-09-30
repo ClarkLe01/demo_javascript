@@ -73,7 +73,6 @@
                         <div class="col-lg-12 mb-3">
                             <div class="form-group">
                                 <label for="Project-Name" class="p-1">Project Name</label>
-                                
                                 <input type="text" name="project-name" id="project-name"
                                     class="shadow form-control form-control-lg" placeholder="Project Name">
                                 <span class="form-message"></span>
@@ -89,8 +88,8 @@
                         </div>
                         <div class="col-lg-6 col-md mb-3">
                             <div class="form-group">
-                                <label for="input_from" class="p-1">From</label>
-                                <input type="text" class="form-control js-datepicker" id="datepicker-start" data-date-format="mm/dd/yyyy"
+                                <label for="start-date" class="p-1">From</label>
+                                <input type="text" class="form-control js-datepicker" name="start-date" id="datepicker-start" data-date-format="mm/dd/yyyy"
                                     placeholder="Start Date">
                                 <span class="form-message"></span>
                             </div>
@@ -98,8 +97,8 @@
                         </div>
                         <div class="col-lg-6 col-md mb-3">
                             <div class="form-group">
-                                <label for="input_to" class="p-1">To</label>
-                                <input type="text" class="form-control js-datepicker" id="datepicker-end" data-date-format="mm/dd/yyyy"
+                                <label for="start-date" class="p-1">To</label>
+                                <input type="text" class="form-control js-datepicker" name="end-date" id="datepicker-end" data-date-format="mm/dd/yyyy"
                                     placeholder="End Date">
                                 <span class="form-message"></span>
                             </div>
@@ -107,7 +106,7 @@
                         <div class="col-lg-12 mb-3">
                             <div class="form-ground">
                                 <label for="devepoler_name" class="p-1">Developer</label>
-                                <select name="" id="" class="form-select form-select-sm form-select-lg mb-3">
+                                <select name="developer-name" id="" class="form-select form-select-sm form-select-lg mb-3">
                                     <option value="Choose developer" disabled selected>Choose developer</option>
                                     <option value="John">John</option>
                                     <option value="Kate">Kate</option>
@@ -317,7 +316,10 @@
                 Validator.isRequired("#project-name"),
                 Validator.isRequired("#project-description"),
                 Validator.minLength("#project-name",6),
-            ]
+            ],
+            onSubmit: (data)=>{
+                console.log(data);
+            }
         });
     </script>
 </body>

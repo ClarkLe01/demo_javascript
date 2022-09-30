@@ -1,7 +1,3 @@
-$("form#create_project_form").on("submit", (e) => {
-    console.log("submited form");
-    e.preventDefault();
-})
 function Validator(options) {
     var selectorRules = {};
 
@@ -34,13 +30,31 @@ function Validator(options) {
         else {
             hide_error(inputElement);
         }
+
+        return !errorMessage;
     }
 
     var formElement = $(options.form);
     if (formElement) {
-        
-
-
+        formElement.on("submit",(e)=>{
+            e.preventDefault();
+            var isFormValid = true;
+            options.rules.forEach((rule)=>{
+                var inputElement = $(rule.selector);
+                var isValid = validate(inputElement,rule);
+                if(!isValid) isFormValid = false;
+            })
+            var condition_element = $("[name]:not(:disabled)");
+            var enableInputs = formElement.find(condition_element);
+            console.log(enableInputs);
+            if(isFormValid){
+                if(typeof options.onSubmit === "function"){
+                    options.onSubmit({
+                        name:"HA",
+                    })
+                }
+            }
+        });
         //listen rule event and solve
         options.rules.forEach((rule) => {
             //Store rules for each input
@@ -64,8 +78,6 @@ function Validator(options) {
                 })
             }
         })
-        console.log(selectorRules);
-        
     }
 }
 
