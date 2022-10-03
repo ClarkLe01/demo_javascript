@@ -50,9 +50,13 @@ function Validator(options) {
                     var condition_element = $("[name]:not(:disabled)");
                     var enableInputs = formElement.find(condition_element);
                     var formValues = Array.from(enableInputs).reduce((values, input) => {
-                        return values[input.name] = input.value && values;
+                        values[input.name] = input.value;
+                        return values;
                     }, {});
                     options.onSubmit(formValues);
+                }
+                else{
+                    formElement.submit();
                 }
             }
         });
@@ -123,6 +127,15 @@ Validator.isConfirmed = (selector, confirmSelector, message) => {
             return value === getConfirmValue(confirmSelector) ? undefined : message || "Confirm Password is not match!";
         }
     }
+};
+
+Validator.isRequiredSelector = (selector) => {
+    return {
+        selector: selector,
+        test: (value) => {
+            return value!=null ? undefined : 'Please choose your selections!';
+        }
+    };
 };
 
 

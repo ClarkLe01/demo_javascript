@@ -69,39 +69,37 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                     <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-3 mt-4">UPDATE DEVELOPER</p>
-                                    <form class="mx-1 mx-md-4" action="./list_projects.html" onsubmit="return validationUpdateDev()" method="post">
+                                    <form class="mx-1 mx-md-4" method="post" id="update-dev-form" class="row">
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <div class="form-outline flex-fill mb-0 pe-1">
+                                            <div class="form-outline flex-fill mb-0 pe-1 form-group">
                                                 <label class="form-label" for="form3Example1c">First Name</label>
                                                 <input type="text" id="first_name" class="form-control" />
-
+                                                <span class="form-message"></span>
                                             </div>
-                                            <div class="form-outline flex-fill mb-0 ps-1">
+                                            <div class="form-outline flex-fill mb-0 ps-1 form-group">
                                                 <label class="form-label" for="form3Example1c">Last Name</label>
                                                 <input type="text" id="last_name" class="form-control" />
-
+                                                <span class="form-message"></span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center mb-4">
-                                            <div class="form-outline flex-fill mb-0">
+                                            <div class="form-outline flex-fill mb-0 form-group">
                                                 <label class="form-label" for="form3Example1c">Choose Project</label>
                                                 <select name="" id="project_selector" class="form-control">
-                                                    <option value="--option--" disabled selected>--Your Option--
+                                                    <option value="" disabled selected>--Your Option--
                                                     </option>
                                                     <option value="Project 1">Project 1</option>
                                                     <option value="Project 2">Project 2</option>
                                                 </select>
+                                                <span class="form-message"></span>
                                             </div>
                                         </div>
-
-                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" class="btn btn-info btn-lg mx-3">Update</button>
-                                            <a type="button" class="btn btn-danger btn-lg mx-3"
+                                        <div class="d-flex justify-content-center form-group">
+                                            <button type="submit" class="btn btn-info mx-3 text-white">Update</button>
+                                            <a type="button" class="btn btn-danger"
                                                 href="./list_projects.html">Cancel</a>
                                         </div>
-
                                     </form>
-
                                 </div>
                                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                                     <div class="img-box">
@@ -271,6 +269,23 @@
     <script src="./assets/vendors/glightbox/js/glightbox.min.js"></script>
     <script src="./assets/vendors/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="./assets/js/lightbox.js"></script>
+
+    <script src="./assets/vendors/jquery/jquery.min.js"></script>
+    <script src="./assets/js/validation.js"></script>
+    <script>
+        Validator({
+            form: "#update-dev-form",
+            errorSelector:".form-message",
+            rules:[
+                Validator.isRequired("#first_name"),
+                Validator.isRequired("#last_name"),
+                Validator.isRequiredSelector("#project_selector"),
+            ],
+            onSubmit: (data)=>{
+                window.location.replace("./list_projects.html");
+            }
+        });
+    </script>
 </body>
 
 </html>

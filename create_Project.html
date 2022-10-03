@@ -93,7 +93,6 @@
                                     placeholder="Start Date">
                                 <span class="form-message"></span>
                             </div>
-
                         </div>
                         <div class="col-lg-6 col-md mb-3">
                             <div class="form-group">
@@ -106,8 +105,8 @@
                         <div class="col-lg-12 mb-3">
                             <div class="form-ground">
                                 <label for="devepoler_name" class="p-1">Developer</label>
-                                <select name="developer-name" id="" class="form-select form-select-sm form-select-lg mb-3">
-                                    <option value="Choose developer" disabled selected>Choose developer</option>
+                                <select name="developer-name" id="select-dev" class="form-select form-select-sm form-select-lg mb-3">
+                                    <option value="" disabled selected>Choose developer</option>
                                     <option value="John">John</option>
                                     <option value="Kate">Kate</option>
                                 </select>
@@ -315,10 +314,12 @@
             rules:[
                 Validator.isRequired("#project-name"),
                 Validator.isRequired("#project-description"),
-                Validator.minLength("#project-name",6),
+                Validator.isRequired("#datepicker-start"),
+                Validator.isRequired("#datepicker-end"),
+                Validator.isRequiredSelector("#select-dev"),
             ],
             onSubmit: (data)=>{
-                console.log(data);
+                window.location.replace("./list_projects.html");
             }
         });
     </script>
