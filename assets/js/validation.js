@@ -19,9 +19,9 @@ function Validator(options) {
         var errorMessage;
         var rules = selectorRules[rule.selector];
 
-        for (let i = 0;i<rules.length;i++){
+        for (let i = 0; i < rules.length; i++) {
             errorMessage = rules[i](inputElement.val());
-            if(errorMessage) break;
+            if (errorMessage) break;
 
         }
         if (errorMessage) {
@@ -36,44 +36,44 @@ function Validator(options) {
 
     var formElement = $(options.form);
     if (formElement) {
-        formElement.on("submit",(e)=>{
+        formElement.on("submit", (e) => {
             e.preventDefault();
             var isFormValid = true;
-            options.rules.forEach((rule)=>{
+            options.rules.forEach((rule) => {
                 var inputElement = $(rule.selector);
-                var isValid = validate(inputElement,rule);
-                if(!isValid) isFormValid = false;
+                var isValid = validate(inputElement, rule);
+                if (!isValid) isFormValid = false;
             })
-            var condition_element = $("[name]:not(:disabled)");
-            var enableInputs = formElement.find(condition_element);
-            console.log(enableInputs);
-            if(isFormValid){
-                if(typeof options.onSubmit === "function"){
-                    options.onSubmit({
-                        name:"HA",
-                    })
+
+            if (isFormValid) {
+                if (typeof options.onSubmit === "function") {
+                    var condition_element = $("[name]:not(:disabled)");
+                    var enableInputs = formElement.find(condition_element);
+                    var formValues = Array.from(enableInputs).reduce((values, input) => {
+                        return values[input.name] = input.value && values;
+                    }, {});
+                    options.onSubmit(formValues);
                 }
             }
         });
         //listen rule event and solve
         options.rules.forEach((rule) => {
             //Store rules for each input
-            if(Array.isArray(selectorRules[rule.selector])){
+            if (Array.isArray(selectorRules[rule.selector])) {
                 selectorRules[rule.selector].push(rule.test);
-
             }
-            else{
+            else {
                 selectorRules[rule.selector] = [rule.test];
             }
 
             var inputElement = $(rule.selector);
             if (inputElement) {
                 // solving blur event
-                inputElement.on("blur",()=>{
+                inputElement.on("blur", () => {
                     validate(inputElement, rule);
                 })
                 //solving when inputing
-                inputElement.on("keydown",()=>{
+                inputElement.on("keydown", () => {
                     hide_error(inputElement);
                 })
             }

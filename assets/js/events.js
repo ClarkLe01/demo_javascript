@@ -1,4 +1,5 @@
 function btn_page_click(x) {
+    
     var url_data = './assets/data/project_data.json';
     var Jsondata = null;
     $.ajax({
@@ -10,8 +11,10 @@ function btn_page_click(x) {
             Jsondata = data.project_list;
             var paging_data = pagination(5, Jsondata);
             add_data_table(paging_data, current_page = x);
+            
         }
     });
+
 }
 
 
