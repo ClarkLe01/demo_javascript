@@ -180,3 +180,12 @@
     }
 
 }
+
+#search_project_btn{
+    @include media-breakpoint-down(lg) { 
+        font-size: 0.6rem;
+    }
+    @include media-breakpoint-down(sm) { 
+        font-size: 0.5rem;
+    }
+}

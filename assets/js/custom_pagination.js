@@ -17,11 +17,6 @@ var add_nav_pagination = (numPage, current_page = 1) => {
     var pagination = $('#pagination');
     var prevValue = (current_page == 1) ? 1 : current_page - 1;
     var nextValue = (current_page == numPage) ? numPage : current_page+1;
-    // console.log('===================================================');
-    
-    // console.log('prevValue = ' + prevValue);
-    // console.log('Current = ' + current_page);
-    // console.log('nextValue = ' + nextValue);
     pagination.empty();
     var html = `    
     <li class="page-item btn-${prevValue}" onclick="btn_page_click(${prevValue})" >

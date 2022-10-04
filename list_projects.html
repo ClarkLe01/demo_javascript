@@ -140,25 +140,23 @@
           <div class="row">
             <form class="col-md-12 row" id="form-search">
               <div class="input-group d-flex flex-row align-items-center" id="search-group">
-                <div class="form-outline flex-fill mb-0 pe-1 col-lg-7 form-group">
-                  <input type="text" id="search_input" class="form-control text-center" placeholder="search by name here"/>
+                <div class="form-outline flex-fill mb-0 pe-1 col-lg-6 col-md-6 form-group">
+                  <input type="text" id="search_input" class="form-control text-center"
+                    placeholder="search by name here" />
                   <span class="form-message"></span>
                 </div>
-                <div class="form-outline flex-fill mb-0 ps-1 col-lg-2 mx-2 form-group">
-                  <input type="text" id="search-dateStart" class="form-control" />
+                <div class="form-outline flex-fill mb-0 ps-1 col-lg-2 col-md-2 mx-2 form-group text-end">
+                  <input type="text" id="search-dateStart" class="form-control search-datepicker" placeholder="dd/mm/yy"/>
                   <span class="form-message"></span>
                 </div>
-                <div class="form-outline flex-fill mb-0 ps-1 col-lg-2 form-group">
-                  <input type="text" id="search-dateEnd" class="form-control"/>
+                <div class="form-outline flex-fill mb-0 ps-1 col-lg-2 col-md-2 form-group text-end">
+                  <input type="text" id="search-dateEnd" class="form-control search-datepicker" placeholder="dd/mm/yy" />
                   <span class="form-message"></span>
                 </div>
-                <!-- <input type="text" placeholder="Search Here" class="form-control col-md-6 w-50" id="search_input">
-                <input type="text" placeholder="Start" class="form-control mx-1 col-lg-3 search-datepicker"
-                  id="startdate-search">
-                <input type="text" placeholder="End" class="form-control col-lg-3 search-datepicker"
-                  id="finaldate-search"> -->
-                <div class="form-outline flex-fill mb-0 ps-1 form-group">
-                  <button type="submit" class="btn btn-success" id="search_project_btn" style="width: 5rem;"> Filter!</button>
+                <div class="form-outline flex-fill mb-0 ps-1 form-group text-end">
+                  <button type="submit" class="btn btn-success" id="search_project_btn">
+                    Filter!
+                  </button>
                 </div>
               </div>
             </form>
@@ -354,19 +352,25 @@
   <script src="./assets/js/events.js"></script>
 
   <script src="./assets/js/validation.js"></script>
+
   <script>
-      Validator({
-          form: "#form-search",
-          errorSelector:".form-message",
-          rules:[
-              Validator.isRequired("#search_input"),
-              Validator.isRequired("#search-dateStart"),
-              Validator.isRequired("#search-dateEnd"),
-          ],
-          onSubmit: (data)=>{
-              window.location.replace("./list_projects.html");
-          }
-      });
+    $("#form-search").on("submit", (e) => {
+      e.preventDefault();
+      var search_input = $('#search_input').val();
+      var search_dateStart = $('#search-dateStart').val();
+      var search_dateEnd = $("#search-dateEnd").val();
+      if (search_input.length == 0 && search_dateStart.length == 0 && search_dateEnd.length == 0) {
+        alert('Please input least one value');
+      }
+      else if (Date.parse(search_dateStart) > Date.parse(search_dateEnd)) {
+        alert('Please choose proper the range of date');
+      }
+      else {
+        $(this).submit((e)=>{
+          window.location.replace(`./list_projects.html?search_input=${search_input}&search_dateStart=${search_dateStart}&search_dateEnd=${search_dateEnd}`);
+        })
+      }
+    })
   </script>
 
 </body>

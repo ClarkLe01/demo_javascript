@@ -1,7 +1,7 @@
 function btn_page_click(x) {
-    
     var url_data = './assets/data/project_data.json';
     var Jsondata = null;
+    var search_data = parseURLParams(window.location.href);
     $.ajax({
         url: url_data,
         type: 'get',
@@ -9,20 +9,13 @@ function btn_page_click(x) {
         async: true,
         success: (data) => {
             Jsondata = data.project_list;
+            if (search_data != undefined) {
+                Jsondata = filter_byName(search_data["search_input"][0], Jsondata);
+                Jsondata = filter_byStartDate(search_data["search_dateStart"][0], Jsondata);
+                Jsondata = filter_byEndDate(search_data["search_dateEnd"][0], Jsondata);
+            }
             var paging_data = pagination(5, Jsondata);
             add_data_table(paging_data, current_page = x);
-            
         }
     });
-
 }
-
-
-$("#search_project_btn").click((event)=>{
-    var start_date = $('#startdate-search').val();
-    var end_date = $('#finaldate-search').val();
-    var name_project = $("#search_input").val();
-    console.log("filter_Data function");
-    valid_filter(name_project, start_date, end_date);
-
-})

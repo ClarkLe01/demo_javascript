@@ -70,17 +70,17 @@ function Validator(options) {
                 selectorRules[rule.selector] = [rule.test];
             }
 
-            var inputElement = $(rule.selector);
-            if (inputElement) {
-                // solving blur event
-                inputElement.on("blur", () => {
-                    validate(inputElement, rule);
-                })
-                //solving when inputing
-                inputElement.on("keydown", () => {
-                    hide_error(inputElement);
-                })
-            }
+            // var inputElement = $(rule.selector);
+            // if (inputElement) {
+            //     // solving blur event
+            //     inputElement.on("blur", () => {
+            //         validate(inputElement, rule);
+            //     })
+            //     //solving when inputing
+            //     inputElement.on("keydown", () => {
+            //         hide_error(inputElement);
+            //     })
+            // }
         })
     }
 }
